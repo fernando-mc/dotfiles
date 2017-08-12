@@ -4,9 +4,10 @@ ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
 
 ############## Node, nvm, npm ##############
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm use v6.10.2
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm use v6.10.3
 
 ############## Location Aliases ##############
 # These are used in later scripts & should be loaded early on
@@ -76,4 +77,5 @@ setup()
 }
 
 ############## Regular Maintinence ##############
-brewup
+# Check on brews every once in a while
+if (( RANDOM % 4 )); then brewup; fi
