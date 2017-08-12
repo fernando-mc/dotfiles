@@ -78,4 +78,8 @@ setup()
 
 ############## Regular Maintinence ##############
 # Check on brews every once in a while
-if (( RANDOM % 4 )); then brewup; fi
+if (( RANDOM % 8 )); then brewup; fi
+
+############## Git Setup ##############
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa_shared_mac
