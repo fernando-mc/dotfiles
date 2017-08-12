@@ -1,0 +1,79 @@
+############## zsh config ##############
+export ZSH=~/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
+
+############## Node, nvm, npm ##############
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm use v6.10.2
+
+############## Location Aliases ##############
+# These are used in later scripts & should be loaded early on
+alias maincodedir="cd ~/Documents/code"
+alias codeme="maincodedir"
+alias mycode="maincodedir"
+alias myblog="maincodedir && cd fernandomc.com"
+alias mycourse="maincodedir && cd introduction-serverless-framework"
+alias serverlessfoo="maincodedir && cd serverlessfoo.com"
+
+############## Utils ##############
+alias runmypy="python manage.py runserver"
+alias pingoo="ping 8.8.8.8"
+alias editmyshorts='open -a Sublime\ Text ~/.zshrc'
+alias foldopen="open -a 'Sublime Text' ."
+alias sourceme='source ~/.profile && source ~/.bash_profile && source ~/.zshrc && zsh'
+alias ls='ls -GFh'
+alias serveblog="myblog && open -a /Applications/Google\ Chrome.app http://localhost:1313/ && hugo serve"
+alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor"
+
+# Lulz
+alias matrix="cmatrix"
+alias bluepill="cmatrix"
+
+############## Static Site Deployment ##############
+
+# Used after deployment to clear all cached files in CloudFront  
+clearcache()
+{
+    echo "Setting Cloudfront Preview to True"
+    echo "Using profile: fernando"
+    aws configure set preview.cloudfront true --profile fernando
+    aws cloudfront create-invalidation --distribution-id $1 --paths '/*' --profile fernando
+}
+
+# Specific Cloudfront Distributions
+alias clearcachefernandomc="clearcache E2857ET5W4IK27"
+alias clearcacheserverlessfoo="clearcache E2HTRBKTQEU9RM"
+
+# Deployment steps for my static sites
+alias deployblog="myblog && find . -name '.DS_Store' -type f -delete && hugo && aws s3 sync ./public s3://aws-website-httpfernandomccom-hyvk5 --profile fernando && rm -r ./public && clearcachefernandomc"
+
+alias deployserverlessfoo="serverlessfoo && find . -name '.DS_Store' -type f -delete && mkdir public && cp -r css public && cp -r images public && cp -r js public && cp -r fonts public && cp -r projects public && cp index.html public && aws s3 sync ./public s3://www.serverlessfoo.com --profile fernando && rm -r ./public && clearcacheserverlessfoo"
+
+############## Misc. Scripts ##############
+awsps()
+{
+    cd ~/.aws
+    echo swapping to $1
+    python ~/scripts/aws_profile_swap.py $1
+    cd -
+}
+
+newpost()
+{
+    echo "Enter the post title."
+    echo "Example: my-awesome-post"
+    read titleofpost 
+    echo your post will be $titleofpost.md
+    myblog
+    hugo new posts/$titleofpost.md
+}
+
+setup()
+{
+    git clone git@github.com:fernando-mc/scripts.git
+}
+
+############## Regular Maintinence ##############
+brewup

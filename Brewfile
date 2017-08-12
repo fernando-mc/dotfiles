@@ -1,0 +1,27 @@
+cask_args appdir: '/Applications'
+
+tap 'caskroom/cask' || true
+
+brew 'git'
+brew 'tree'
+brew 'node'
+brew 'npm'
+brew 'nvm'
+brew 'zsh'
+brew 'zsh-completions'
+brew 'awscli'
+brew 'wget'
+brew 'cmatrix'
+
+cask 'google-chrome'
+cask 'dropbox'
+cask 'evernote'
+cask 'virtualbox'
+cask 'slack'
+cask 'sublime-text'
+cask 'virtualbox'
+cask 'keepassxc'
+cask 'postman'
+cask 'pg-commander'
+cask 'skype'
+cask 'postico'
