@@ -10,6 +10,9 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew tap homebrew/bundle
 brew bundle install
 
+# Install the specific version of hugo I need for my blog theme
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/d3c4aadfd067534a723f9cf2e5c5bec444d0579d/Formula/hugo.rb
+
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 nvm install 6.10.3
 nvm use 6.10.3
