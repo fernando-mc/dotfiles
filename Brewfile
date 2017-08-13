@@ -12,6 +12,7 @@ brew 'zsh-completions'
 brew 'awscli'
 brew 'wget'
 brew 'cmatrix'
+brew 'hugo'
 
 cask 'google-chrome'
 cask 'dropbox'
