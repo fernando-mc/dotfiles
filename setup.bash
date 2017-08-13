@@ -22,3 +22,6 @@ mkdir ~/Documents/code
 
 cd ~/Documents/code && git clone git@github.com:fernando-mc/fernandomc.com.git
 cd ~/Documents/code && git clone git@github.com:fernando-mc/serverlessfoo.com.git
+
+# Set ssh keys on OSX keychain
+ls ~/.ssh/id_rsa* | grep -v '.pub' | xargs ssh-add -K
