@@ -67,8 +67,16 @@ nvm use 6.10.3
 # Get Pip and python tools
 sudo apt-get install python-pip python-virtualenv
 
+#################### Snaps ####################
+# sudo apt update
+# sudo apt install snapd
+# sudo apt install snapd-xdg-open
+
+
 #################### Install Globals ####################
 npm install serverless -g
+pip install awscli --upgrade --user
+sudo apt-get install hugo
 
 #################### RESTARTS YOUR MACHINE TO MAKE FINAL CHANGES ####################
 # Let's the zsh stuff start by default cause it's in etc/passwd
