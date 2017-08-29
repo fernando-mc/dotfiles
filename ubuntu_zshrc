@@ -25,7 +25,7 @@ alias editmyshorts='subl ~/.zshrc'
 alias foldopen="subl ."
 alias sourceme='source ~/.profile && source ~/.zshrc && zsh'
 alias ls='ls -GFh'
-alias serveblog="myblog && google-chrome http://localhost:1313/ && hugo serve"
+alias serveblog="myblog && google-chrome http://localhost:1313/ & hugo serve"
 
 
 ############## Static Site Deployment ##############
