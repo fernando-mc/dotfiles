@@ -21,8 +21,8 @@ alias serverlessfoo="maincodedir && cd serverlessfoo.com"
 ############## Utils ##############
 alias runmypy="python manage.py runserver"
 alias pingoo="ping 8.8.8.8"
-alias editmyshorts='open -a Sublime\ Text ~/.zshrc'
-alias foldopen="open -a 'Sublime Text' ."
+alias editmyshorts='subl ~/.zshrc'
+alias foldopen="subl ."
 alias sourceme='source ~/.profile && source ~/.bash_profile && source ~/.zshrc && zsh'
 alias ls='ls -GFh'
 alias serveblog="myblog && open -a /Applications/Google\ Chrome.app http://localhost:1313/ && hugo serve"
