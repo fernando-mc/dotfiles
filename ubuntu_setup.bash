@@ -49,6 +49,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Switch to zsh so other steps install profile specifics in zsh not just bash
 zsh
 
+# Copy zsh for ubuntu
+cp ubuntu_zshrc ~/.zshrc
+
 
 #################### Install Node, npm, and nvm ####################
 
