@@ -19,6 +19,8 @@ alias mycourse="maincodedir && cd introduction-serverless-framework"
 alias serverlessfoo="maincodedir && cd serverlessfoo.com"
 
 ############## Utils ##############
+alias logmein='ssh -i /home/fernando/.ssh/aws_ec2_workbench.pem ubuntu@ec2-35-171-28-80.compute-1.amazonaws.com'
+alias pr='f() { git fetch origin && git checkout pr/"$1"; }; f'
 alias runmypy="python manage.py runserver"
 alias pingoo="ping 8.8.8.8"
 alias editmyshorts='subl ~/.zshrc'
@@ -45,11 +47,14 @@ clearcache()
 # Specific Cloudfront Distributions
 alias clearcachefernandomc="clearcache E2857ET5W4IK27"
 alias clearcacheserverlessfoo="clearcache E2HTRBKTQEU9RM"
+alias clearcacheredpy="clearcache E18T9FI9FOHISS"
 
 # Deployment steps for my static sites
 alias deployblog="myblog && find . -name '.DS_Store' -type f -delete && hugo && aws s3 sync ./public s3://aws-website-httpfernandomccom-hyvk5 --profile fernando && rm -r ./public && clearcachefernandomc"
 
 alias deployserverlessfoo="serverlessfoo && find . -name '.DS_Store' -type f -delete && mkdir public && cp -r css public && cp -r images public && cp -r js public && cp -r fonts public && cp -r projects public && cp index.html public && aws s3 sync ./public s3://www.serverlessfoo.com --profile fernando && rm -r ./public && clearcacheserverlessfoo"
+
+alias deployredpy="mycode && cd ./redmondpython.com && find . -name '.DS_Store' -type f -delete && hugo && aws s3 sync ./public s3://aws-website-redmondpythoncom-lulhl --profile fernando && rm -r ./public && clearcacheredpy"
 
 ############## Misc. Scripts ##############
 awsps()
@@ -70,7 +75,18 @@ newpost()
     hugo new posts/$titleofpost.md
 }
 
-[[ -f /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/fernando/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
+# added by travis gem
+[ -f /home/fernando/.travis/travis.sh ] && source /home/fernando/.travis/travis.sh
