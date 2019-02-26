@@ -57,7 +57,7 @@ awsps()
 {
     cd ~/.aws
     echo swapping to $1
-    python ~/.scripts/aws_profile_swap.py $1
+    python ~/.scripts/aws_default_profile_swap.py $1
     cd -
 }
 
