@@ -16,7 +16,7 @@ brew 'hugo'
 
 cask 'google-chrome'
 cask 'dropbox'
-cask 'evernote'
+cask 'visual-studio-code'
 cask 'virtualbox'
 cask 'slack'
 cask 'sublime-text'
